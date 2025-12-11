@@ -39,19 +39,16 @@ const Navbar: React.FC = () => {
       const currentScrollY = window.scrollY;
       if (navbarRef.current) {
         if (currentScrollY > prevScrollY.current && currentScrollY > 0) {
-         
           if (!isNavbarVisible.current) {
             gsap.to(navbarRef.current, { y: 0, opacity: 1, duration: 0 });
             isNavbarVisible.current = true;
           }
         } else if (currentScrollY <= prevScrollY.current) {
-         
           gsap.to(navbarRef.current, { y: -100, opacity: 0, duration: 0 });
           isNavbarVisible.current = false;
         }
 
         if (currentScrollY === 0) {
-         
           gsap.to(navbarRef.current, { y: -100, opacity: 0, duration: 0 });
           isNavbarVisible.current = false;
         }
@@ -62,7 +59,6 @@ const Navbar: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-   
     gsap.to(navbarRef.current, { y: -100, opacity: 0, duration: 0 });
     isNavbarVisible.current = false;
 
@@ -89,35 +85,41 @@ const Navbar: React.FC = () => {
             />
           </div>
 
-          <div className="hidden md:flex space-x-20 items-center">
+          <div className="hidden md:flex space-x-14 items-center">
             <div
               className="relative cursor-pointer"
               onMouseEnter={() => handleMouseEnter("destinations")}
               onMouseLeave={() => handleMouseLeave("destinations")}
             >
-              <button className="flex items-center text-gray-900 hover:text-[#D4915E] font-medium">
+              <button className="flex items-center text-gray-900 hover:text-[#D4915E] font-medium rounded-full py-2 ml-10">
                 Destinations <FaAngleDown className="ml-1" />
               </button>
+
               {destinationsOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-48 bg-white z-10"
-                  onMouseEnter={() => handleMouseEnter("destinations")}
-                  onMouseLeave={() => handleMouseLeave("destinations")}
-                >
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white z-10">
                   {[
-                    "Great Ocean Road",
-                    "Yarra Valley",
-                    "Melbourne",
-                    "Sydney",
-                    "Tasmania",
-                    "Australia Packages",
+                    {
+                      name: "Great Ocean Road",
+                      link: "/destinations/great-ocean-road",
+                    },
+                    {
+                      name: "Yarra Valley",
+                      link: "/destinations/yarra-valley",
+                    },
+                    { name: "Melbourne", link: "/destinations/melbourne" },
+                    { name: "Sydney", link: "/destinations/sydney" },
+                    { name: "Tasmania", link: "/destinations/tasmania" },
+                    {
+                      name: "Australia Packages",
+                      link: "/destinations/australia-packages",
+                    },
                   ].map((item) => (
                     <a
-                      key={item}
-                      href="#"
+                      key={item.name}
+                      href={item.link}
                       className="block px-4 py-2 whitespace-nowrap text-black hover:text-[#D4915E]"
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))}
                 </div>
@@ -129,28 +131,40 @@ const Navbar: React.FC = () => {
               onMouseEnter={() => handleMouseEnter("tours")}
               onMouseLeave={() => handleMouseLeave("tours")}
             >
-              <button className="flex items-center text-gray-900 hover:text-[#D4915E] font-medium">
+              <button className="flex items-center text-gray-900 hover:text-[#D4915E] font-medium rounded-full py-2 whitespace-nowrap">
                 Private Tours <FaAngleDown className="ml-1" />
               </button>
+
               {privateToursOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-100 bg-white z-10"
-                  onMouseEnter={() => handleMouseEnter("tours")}
-                  onMouseLeave={() => handleMouseLeave("tours")}
-                >
+                <div className="absolute top-full left-0 mt-2 w-100 bg-white z-10">
                   {[
-                    "1 Day Private Great Ocean Road Tour",
-                    "1-Day Yarra Valley Private Winery Tour",
-                    "2 Day Private Great Ocean Road Tour",
-                    "3-Day Private Great Ocean Road & Grampians Tour",
-                    "Private Tour Melbourne",
+                    {
+                      name: "1 Day Private Great Ocean Road Tour",
+                      link: "/tours/1-day-great-ocean-road",
+                    },
+                    {
+                      name: "1-Day Yarra Valley Private Winery Tour",
+                      link: "/tours/yarra-valley-winery",
+                    },
+                    {
+                      name: "2 Day Private Great Ocean Road Tour",
+                      link: "/tours/2-day-great-ocean-road",
+                    },
+                    {
+                      name: "3-Day Private Great Ocean Road & Grampians Tour",
+                      link: "/tours/3-day-gor-grampians",
+                    },
+                    {
+                      name: "Private Tour Melbourne",
+                      link: "/tours/melbourne-private",
+                    },
                   ].map((item) => (
                     <a
-                      key={item}
-                      href="#"
+                      key={item.name}
+                      href={item.link}
                       className="block px-4 py-2 whitespace-nowrap text-black hover:text-[#D4915E]"
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))}
                 </div>
@@ -158,13 +172,14 @@ const Navbar: React.FC = () => {
             </div>
 
             <a
-              href="#"
+              href="/about"
               className="text-gray-900 hover:text-[#D4915E] font-medium whitespace-nowrap"
             >
               About
             </a>
+
             <a
-              href="#"
+              href="/stories"
               className="text-gray-900 hover:text-[#D4915E] font-medium whitespace-nowrap"
             >
               Stories
@@ -181,7 +196,7 @@ const Navbar: React.FC = () => {
             </div>
 
             <a
-              href="#"
+              href="/contact"
               className="ml-auto h-15 -mt-1 px-10 flex items-center bg-[#c67549] text-white font-semibold hover:bg-[#646254] transition-colors"
             >
               Contact Us
