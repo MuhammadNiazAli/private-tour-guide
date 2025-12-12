@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { RiMailCheckFill } from "react-icons/ri";
 import { FaAngleDown } from "react-icons/fa6";
 import gsap from "gsap";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const [destinationsOpen, setDestinationsOpen] = useState(false);
@@ -76,6 +77,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-8xl h-15 mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between h-16 items-center relative">
           <div className="shrink-0">
+            <Link href='/'>
             <Image
               src="https://theprivatetourguide.com/wp-content/uploads/2025/05/logo.svg"
               alt="Logo"
@@ -83,6 +85,7 @@ const Navbar: React.FC = () => {
               height={40}
               className="object-contain ml-10"
             />
+            </Link>
           </div>
 
           <div className="hidden md:flex space-x-14 items-center">
@@ -114,13 +117,13 @@ const Navbar: React.FC = () => {
                       link: "/destinations/australia-packages",
                     },
                   ].map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.link}
                       className="block px-4 py-2 whitespace-nowrap text-black hover:text-[#D4915E]"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -159,31 +162,31 @@ const Navbar: React.FC = () => {
                       link: "/tours/melbourne-private",
                     },
                   ].map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.link}
                       className="block px-4 py-2 whitespace-nowrap text-black hover:text-[#D4915E]"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <a
+            <Link
               href="/about"
               className="text-gray-900 hover:text-[#D4915E] font-medium whitespace-nowrap"
             >
               About
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/stories"
               className="text-gray-900 hover:text-[#D4915E] font-medium whitespace-nowrap"
             >
               Stories
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center h-full space-x-4 relative">
@@ -195,12 +198,12 @@ const Navbar: React.FC = () => {
               </span>
             </div>
 
-            <a
+            <Link
               href="/contact"
               className="ml-auto h-15 -mt-1 px-10 flex items-center bg-[#c67549] text-white font-semibold hover:bg-[#646254] transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
